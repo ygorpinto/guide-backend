@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2022_11_22_182504) do
   enable_extension "plpgsql"
 
   create_table "stocks", force: :cascade do |t|
-    t.date "date"
+    t.datetime "date"
     t.float "price"
-    t.string "name"
+    t.string "symbol"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

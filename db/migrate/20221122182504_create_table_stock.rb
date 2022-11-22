@@ -1,9 +1,9 @@
 class CreateTableStock < ActiveRecord::Migration[6.1]
   def change
     create_table :stocks do |t|
-      t.date :date
+      t.timestamp :date
       t.float :price
-      t.string :name
+      t.string :symbol
       t.timestamps
     end
   end
