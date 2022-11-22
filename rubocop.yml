@@ -1,0 +1,10 @@
+Layout/EmptyComment:
+  Enabled: false
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+Layout/EmptyLineAfterMagicComment:
+  Enabled: false
+Layout/EmptyLineAfterMultilineCondition:
+  Enabled: false
+  Metrics/BlockLength:
+  Enabled: false

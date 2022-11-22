@@ -1,0 +1,33 @@
+version: '3.5'
+networks:
+  default:
+    name: guide_apps
+services:
+  database:
+    image: postgres:15
+    container_name: guide_app_db
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: guide_app_db
+    ports:
+      - "5432:5432"
+  redis:
+    image: redis:5.0.7
+    container_name: guide_app_redis
+    ports:
+      - 6379:6379
+  guide_app:
+  # Para funcionar execute "ln -sf Dockerfile.ontest Dockerfile"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: env.development
+    command: "rails server -b 0.0.0.0"
+    # depends_on:
+    #   - database
+    #   - redis
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./:/app/
