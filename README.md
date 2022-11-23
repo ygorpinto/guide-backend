@@ -6,7 +6,9 @@ Fiz o projeto usando Docker, dessa forma é garantido que quem for rodar não te
 
 ### Passos para rodar local:
 
-  - Clonar o repositório
+  - Clonar o repositório 
+  - git clone git@github.com:ygorpinto/guide-backend.git
+  - cd guide-backend 
   - docker-compose up
 
 Pronto, só com isso ele já vai subir a aplicação na porta 3000.
