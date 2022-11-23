@@ -4,96 +4,95 @@ info:
   title: API V1
   version: v1
 paths:
-  "/api/v1/stock":
+  "/api/v1/stocks":
+    get:
+      summary: list stocks
+      responses:
+        '200':
+          description: successful
     post:
-      summary: Creates a stock
-      tags:
-      - stock
+      summary: create stock
       parameters: []
       responses:
-        '201':
-          description: stock created
-        '422':
-          description: invalid request
+        '200':
+          description: successful
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                name:
+                symbol:
                   type: string
-                photo_url:
+                price:
                   type: string
-                status:
+                date:
                   type: string
               required:
               - name
-              - status
-          application/xml:
+              - model
+  "/api/v1/stocks/{id}":
+    parameters:
+    - id: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show stock
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update stock
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
             schema:
               type: object
               properties:
-                name:
+                symbol:
                   type: string
-                photo_url:
+                price:
                   type: string
-                status:
+                date:
                   type: string
               required:
               - name
-              - status
-  "/api/v1/stock/{id}":
-    get:
-      summary: Retrieves a stock
-      tags:
-      - stock
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
+              - model
+    put:
+      summary: update stock
+      parameters: []
       responses:
         '200':
-          description: name found
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  photo_url:
-                    type: string
-                  status:
-                    type: string
-                required:
-                - id
-                - name
-                - status
-            application/xml:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  photo_url:
-                    type: string
-                  status:
-                    type: string
-                required:
-                - id
-                - name
-                - status
-        '404':
-          description: stock not found
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                symbol:
+                  type: string
+                price:
+                  type: string
+                date:
+                  type: string
+              required:
+              - name
+              - model
+    delete:
+      summary: delete stock
+      responses:
+        '200':
+          description: successful
 servers:
-- url: https://{defaultHost}
+- url: http://{defaultHost}
   variables:
     defaultHost:
-      default: www.example.com
+      default: localhost:3000

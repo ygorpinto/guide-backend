@@ -46,11 +46,12 @@ test:
   pool: 5
   username: root
   password: root
+  host: guide_app_db
 
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: guide_app_db
-  pool: 5
-  username: root
-  password: root
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: guide_app_db
+#   pool: 5
+#   username: root
+#   password: root

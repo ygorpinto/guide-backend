@@ -5,6 +5,12 @@ class RentabilityCalculatorService
     self.parse_and_match_timestamps_and_dates(res)
   end
 
+  def self.calc_rentability(stock)
+    old_stock = Stock.find_by(id:stock.id-1)
+    return 0 if old_stock.nil?
+    (stock.price/old_stock.price - 1) * 100
+  end
+
   protected
   def self.parse_and_match_timestamps_and_dates(res)
     dates_and_prices = {}
@@ -15,7 +21,6 @@ class RentabilityCalculatorService
       dates_and_prices[i] = dates_and_prices[i].merge({price: price})
     end
     dates_and_prices.each do |k,v|
-      puts "criando com data #{v[:date]}"
       Stock.create(price: v[:price], date: Time.at(v[:date]).to_datetime, symbol: self.symbol(res))
     end
   end
